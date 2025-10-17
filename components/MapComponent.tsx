@@ -100,21 +100,36 @@ const MapComponent: React.FC<MapComponentProps> = ({ busLines, selectedBusId, on
                   click: () => onBusSelect?.(bus.id),
                 }}
               >
-                <Popup>
-                  <div className="p-2">
-                    <h3 className="font-bold text-lg">{bus.name}</h3>
-                    <p className="text-sm text-gray-600">Route: {bus.route_number}</p>
-                    <p className="text-sm">
-                      Status: <span className={`font-semibold ${
-                        bus.status === 'Active' ? 'text-green-600' :
-                        bus.status === 'Maintenance' ? 'text-yellow-600' : 'text-red-600'
-                      }`}>{bus.status}</span>
-                    </p>
-                    <p className="text-sm">Passengers: {bus.passengers.current}/{bus.passengers.capacity}</p>
-                    <p className="text-sm">Driver: {bus.driver.name}</p>
-                    <p className="text-xs text-gray-500">{bus.current_location.address}</p>
+               <Popup>
+                <div className="p-3 w-56 rounded-xl shadow-lg bg-white dark:bg-gray-900">
+                  <div className="flex justify-between items-center mb-2">
+                    <h3 className="font-bold text-base text-gray-800 dark:text-gray-100">{bus.name}</h3>
+                    <span
+                      className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
+                        bus.status === 'Active'
+                          ? 'bg-green-100 text-green-700'
+                          : bus.status === 'Maintenance'
+                          ? 'bg-yellow-100 text-yellow-700'
+                          : 'bg-red-100 text-red-700'
+                      }`}
+                    >
+                      {bus.status}
+                    </span>
                   </div>
-                </Popup>
+
+                  <p className="text-sm text-gray-700 dark:text-gray-300">
+                    <span className="font-medium">Route:</span> {bus.route_number}
+                  </p>
+                  <p className="text-sm text-gray-700 dark:text-gray-300">
+                    <span className="font-medium">Driver:</span> {bus.driver.name}
+                  </p>
+                  <p className="text-sm text-gray-700 dark:text-gray-300">
+                    <span className="font-medium">Passengers:</span> {bus.passengers.current}/{bus.passengers.capacity}
+                  </p>
+                  <p className="text-xs text-gray-500 mt-2">{bus.current_location.address}</p>
+                </div>
+              </Popup>
+
               </Marker>
 
               {/* Bus stops */}
