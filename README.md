@@ -1,36 +1,187 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Amana Transportation - Real-time Bus Tracking System
+
+A modern, responsive web application for tracking public transportation buses in Kuala Lumpur, Malaysia. Built with Next.js, Tailwind CSS, and Leaflet.js for interactive mapping.
+
+## Features
+
+- 🗺️ **Interactive Map**: Real-time bus location tracking with Leaflet.js
+- 📊 **Dashboard**: Comprehensive operational summary and statistics
+- 🚌 **Bus List**: Detailed view of all bus lines with status and passenger information
+- 📱 **Responsive Design**: Optimized for desktop, tablet, and mobile devices
+- 🔄 **Live Data**: Auto-refreshing data every 30 seconds from the API
+- 🎯 **Route Visualization**: Color-coded bus routes and stops on the map
+- 📋 **Detailed Information**: Driver details, vehicle info, incidents, and passenger load
+
+## Tech Stack
+
+- **Frontend**: Next.js 15.5.5 with React 19
+- **Styling**: Tailwind CSS 4
+- **Mapping**: Leaflet.js with React-Leaflet
+- **Language**: TypeScript
+- **API**: Real-time data from Amana Bootcamp API
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ 
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd Amana-Transportation
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+3. Run the development server:
 ```bash
 npm run dev
 # or
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+├── app/                    # Next.js app directory
+│   ├── globals.css        # Global styles and Tailwind imports
+│   ├── layout.tsx         # Root layout component
+│   └── page.tsx           # Main page component
+├── components/            # React components
+│   ├── Map.tsx           # Dynamic map wrapper (SSR-safe)
+│   ├── MapComponent.tsx  # Interactive map with Leaflet
+│   ├── BusList.tsx       # Bus list component
+│   ├── BusDetails.tsx    # Detailed bus information
+│   └── Dashboard.tsx     # Operational dashboard
+├── lib/                  # Utility functions
+│   └── api.ts           # API integration functions
+├── types/               # TypeScript type definitions
+│   └── index.ts        # API data types
+└── public/             # Static assets
+```
 
-## Learn More
+## API Integration
 
-To learn more about Next.js, take a look at the following resources:
+The application fetches real-time data from:
+```
+https://www.amanabootcamp.org/api/fs-classwork-data/amana-transportation
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Data Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The API provides:
+- **Company Information**: Name, description, headquarters
+- **Bus Lines**: Routes, current locations, passenger counts
+- **Operational Summary**: Total buses, capacity, utilization
+- **Real-time Updates**: Live bus positions and status
 
-## Deploy on Vercel
+## Key Components
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Map Component
+- Interactive map with bus locations and routes
+- Color-coded status indicators (Active/Maintenance/Out of Service)
+- Clickable markers with detailed popups
+- Route visualization with polylines
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Dashboard
+- Real-time operational statistics
+- Company information display
+- System status indicators
+
+### Bus List
+- Comprehensive bus information cards
+- Passenger load visualization
+- Status indicators and incident alerts
+
+### Bus Details
+- Detailed view of selected bus
+- Driver information
+- Vehicle details and maintenance status
+- Route stops and estimated arrival times
+- Incident reports
+
+## Responsive Design
+
+The application is fully responsive with:
+- **Mobile-first approach** using Tailwind CSS
+- **Flexible grid layouts** that adapt to screen size
+- **Touch-friendly interactions** for mobile devices
+- **Optimized map rendering** for different screen sizes
+
+## Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## Deployment
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+### Start Production Server
+
+```bash
+npm start
+```
+
+### Deploy to Vercel
+
+The easiest way to deploy is using [Vercel](https://vercel.com):
+
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Deploy automatically
+
+## Development
+
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+
+### Code Style
+
+- TypeScript for type safety
+- Tailwind CSS for styling
+- ESLint for code quality
+- Prettier for code formatting
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## License
+
+This project is part of the Amana Bootcamp curriculum and is for educational purposes.
+
+## Acknowledgments
+
+- Built for Amana Bootcamp Full Stack Development course
+- API data provided by Amana Bootcamp
+- Map tiles by OpenStreetMap contributors
+- Icons and UI components built with Tailwind CSS
